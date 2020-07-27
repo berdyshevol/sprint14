@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @SpringBootApplication
@@ -36,22 +39,22 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Running Spring Boot Application");
-		try{
-			for (int i=0; i < 50; i++) {
-				User user = new User();
-				user.setPassword("qwertyQwerty6^");
-				user.setRole(User.Role.TRAINEE);
-				user.setFirstName("TraineeName" + i);
-				user.setLastName("TraineeSurname" + i);
-				user.setEmail("trainee" + i + "@user.com");
-				userService.createOrUpdateUser(user);
-				System.out.println("Done " + i );
-			}
-		}
-		catch (ConstraintViolationException e){
-			System.out.println(e.getMessage());
-		}
+		System.out.println("----------------------------Running Spring Boot Application");
+//		try{
+//			for (int i=0; i < 50; i++) {
+//				User user = new User();
+//				user.setPassword("qwertyQwerty6^");
+//				user.setRole(User.Role.TRAINEE);
+//				user.setFirstName("TraineeName" + i);
+//				user.setLastName("TraineeSurname" + i);
+//				user.setEmail("trainee" + i + "@user.com");
+//				userService.createOrUpdateUser(user);
+//				System.out.println("Done " + i );
+//			}
+//		}
+//		catch (ConstraintViolationException e){
+//			System.out.println(e.getMessage());
+//		}
 //
 //		User user = userService.getUserById(1L);
 //		user.setPassword("newNewPassword");
@@ -69,18 +72,34 @@ public class Application implements CommandLineRunner {
 //
 //
 //
-//        List<User> users = userService.getAll();
+        List<User> users = userService.getAll();
 //        System.out.println("------USERS----\n"+users);
 //        //logger.info("User id 2 -> {}", user.get());
 //
-//        Marathon marathon = new Marathon();
-//        marathon.setTitle("Second marathon");
+//        Marathon marathon1 = new Marathon();
+//        marathon1.setTitle("1-st marathon");
 //        Set<User> userSet = new LinkedHashSet<>();
 //        userSet.add(users.get(0));
-//        marathon.setMentors(userSet);
-//		         marathonService.createOrUpdate(marathon);
+////        marathon.setMentors(userSet);
+//        marathonService.createOrUpdate(marathon1);
+
+//		Marathon marathon2 = new Marathon();
+//		marathon2.setTitle("2-d marathon");
+//		marathonService.createOrUpdate(marathon2);
+
+//		Marathon marathon3 = new Marathon();
+//		marathon3.setTitle("3-d marathon");
+//		marathonService.createOrUpdate(marathon3);
+
+//		Marathon marathon4 = new Marathon();
+//		marathon4.setTitle("4-th marathon");
+//		marathonService.createOrUpdate(marathon4);
+
 //        //marathonService.deleteMarathonById(2L);
-//		       List<Marathon> marathons = marathonService.getAll();
+		List<Marathon> marathons = marathonService.getAll();
+		if (marathons.size() == 4) System.out.println("+++++++++++++++");
+		else System.out.println("---------------");
+		System.out.println(marathons.get(0).getTitle());
 //		       marathon = marathons.get(0);
 //        //System.out.println(marathons);
 //
@@ -111,7 +130,7 @@ public class Application implements CommandLineRunner {
 //        progress.setStatus(Progress.TaskStatus.PENDING);
 //		System.out.println("!!!"+progressService.setStatus(Progress.TaskStatus.PENDING, progress));
 //
-		System.out.println(progressService.allProgressByUserIdAndSprintId(26L, 1L));
+//		System.out.println(progressService.allProgressByUserIdAndSprintId(26L, 1L));
 
 	}
 }

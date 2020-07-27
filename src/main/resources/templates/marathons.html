@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Marathon Page</title>
+</head>
+<body>
+    <h2>List of Marathons</h2>
+    <table border="1px">
+        <tr>
+            <th>Id</th> <th>Title</th>  <th colspan="2"></th>
+        </tr>
+        <tr th:each="marathon: ${marathons}">
+            <td th:text="${marathon.getId()}" />
+            <td th:text="${marathon.getTitle()}" />
+            <td>
+                <a th:href="@{marathon/edit/{id}(id=${marathon.getId()})}"> Edit </a>
+            </td>
+            <td>
+                <a th:href="@{marathon/delete/{id}(id=${marathon.getId()})}"> Close </a>
+            </td>
+        </tr>
+    </table>
+    <a href="create-marathon"><input type="button" value="Create Marathon"></a>
+
+</body>
+</html>
