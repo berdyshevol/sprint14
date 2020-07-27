@@ -6,12 +6,11 @@
     <title>Create Marathon</title>
 </head>
 <body>
-Hello
-<!--    <form th:action="@{/saveMarathon}" th:object="${marathon}" method="post">-->
-<!--        <p>Title: <input type="text" th:field="*{title}"/></p>-->
-<!--        <input type="submit" value="Create Marathon"/>-->
-<!--        <input type="cancel" value="Cancel">-->
-<!--    </form>-->
+    <form th:action="@{/createMarathon}" th:object="${marathon}" method="post">
+        <p>Title: <input type="text" th:field="*{title}"/></p>
+        <input type="submit" value="Create Marathon"/>
+<!--        <button onclick="window.history.back()">Go Back</button>-->
+    </form>
 <!--<form th:action="@{/saveUser}" th:object="${user}" method="post">-->
 <!--    <p>Firstname: <input type="text" th:field="*{fisrtName}"/></p>-->
 <!--    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>-->

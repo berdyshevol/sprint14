@@ -34,14 +34,16 @@ public class MarathonController {
         return "redirect:/marathons";
     }
 
-//    @GetMapping("/create-marathon")
-//    public String creatMarathon() {
-//        return "redirect:/createmarathon";
-//    }
-//
-//    @PostMapping("/saveMarathon")
-//    public String addMarathon(@ModelAttribute(name="marathon") Marathon marathon) {
-//        marathonService.createOrUpdate(marathon);
-//        return "redirect:/users";
-//    }
+    @GetMapping("/createmarathon")
+    public String creatMarathon(Model model) {
+        Marathon marathon = new Marathon();
+        model.addAttribute("marathon", marathon);
+        return "createmarathon";
+    }
+
+    @PostMapping("/createMarathon")
+    public String addMarathon(@ModelAttribute(name="marathon") Marathon marathon) {
+        marathonService.createOrUpdate(marathon);
+        return "redirect:/marathons";
+    }
 }
