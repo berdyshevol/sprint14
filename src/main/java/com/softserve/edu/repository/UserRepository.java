@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> getAllByRole(User.Role role);
 
+    List<User> findAllByMarathonIdAndRole(long id, User.Role valueOf);
 }

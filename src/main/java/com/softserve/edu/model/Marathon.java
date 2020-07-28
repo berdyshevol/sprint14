@@ -6,7 +6,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -31,12 +33,6 @@ public class Marathon {
             name="marathon_user", joinColumns=@JoinColumn(name="marathon_id"),
             inverseJoinColumns=@JoinColumn(name="user_id")
     )
-    private Set<User> users = new LinkedHashSet<>();
-
-//    @OneToMany(
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    private Set<User> trainees = new LinkedHashSet<>();
+    private List<User> users = new ArrayList<>();
 
    }

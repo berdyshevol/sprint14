@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -49,5 +50,20 @@ public class UserServiceImpl implements UserService {
         Marathon marathonEntity = marathonRepository.getOne(marathon.getId());
         marathonEntity.getUsers().add(userEntity);
         return marathonRepository.save(marathonEntity) != null;
+    }
+    public List<User> allUsersByMarathonIdAndRole(long id, String role) {
+        return userRepository.findAllByMarathonIdAndRole(id, User.Role.valueOf(role));
+    }
+    public boolean deleteUserFromMarathon(User user, Marathon marathon) {
+
+        Optional<User> userEntity = userRepository.findById(user.getId());
+        Optional<Marathon> marathonEntity = marathonRepository.findById(marathon.getId());
+        if(!userEntity.isPresent() || !marathonEntity.isPresent()) {
+            return false;
+        }
+        List<User> users = marathonEntity.get().getUsers();
+        users.remove(userEntity.get());
+        marathonEntity.get().setUsers(users);
+        return true;
     }
 }
