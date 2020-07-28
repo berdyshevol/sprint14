@@ -40,10 +40,23 @@ public class SprintServiceImpl implements SprintService {
         return false;
     }
 
-    @Override
-    public boolean updateSprint(Sprint sprint) {
-        return false;
-    }
+        @Override
+        public boolean updateSprint(Sprint sprint) {
+            if(sprint != null) {
+                Optional<Sprint> temp = sprintRepository.findById(  sprint.getId());
+
+                if(temp.isPresent()) {
+                    Sprint newSprint = temp.get();
+                    newSprint.setTitle(sprint.getTitle());
+                    newSprint.setTasks(sprint.getTasks());
+                    newSprint.setEndDate(sprint.getEndDate());
+                    newSprint.setStartDate(sprint.getStartDate());
+                    newSprint.setMarathon(sprint.getMarathon());
+
+                }
+            }
+            return true;
+        }
 
     @Override
     public Sprint getSprintById(Long id) {
