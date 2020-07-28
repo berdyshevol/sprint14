@@ -8,11 +8,16 @@
     <h2>List of Marathons</h2>
     <table border="1px">
         <tr>
-            <th>Id</th> <th>Title</th>  <th colspan="2"></th>
+            <th>Id</th> <th>Title</th> <th>Sprints</th>  <th colspan="2"></th>
         </tr>
         <tr th:each="marathon: ${marathons}">
             <td th:text="${marathon.getId()}" />
-            <td th:text="${marathon.getTitle()}" />
+            <td>
+                <a th:href="@{/students/{id}(id=${marathon.getId()})}" th:text="${marathon.getTitle()}"/>
+            </td>
+            <td>
+                <a th:href="@{/sprints/{id}(id=${marathon.getId()})}"> Open sprints</a>
+            </td>
             <td>
                 <a th:href="@{marathon/edit/{id}(id=${marathon.getId()})}"> Edit </a>
             </td>
