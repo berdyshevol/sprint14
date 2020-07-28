@@ -9,12 +9,7 @@
     <form th:action="@{/createMarathon}" th:object="${marathon}" method="post">
         <p>Title: <input type="text" th:field="*{title}"/></p>
         <input type="submit" value="Create Marathon"/>
-<!--        <button onclick="window.history.back()">Go Back</button>-->
+        <input type="reset" value="Reset">
     </form>
-<!--<form th:action="@{/saveUser}" th:object="${user}" method="post">-->
-<!--    <p>Firstname: <input type="text" th:field="*{fisrtName}"/></p>-->
-<!--    <p>Lastname: <input type="text" th:field="*{lastName}"/></p>-->
-<!--    <p><input type="submit" value="Add user"/></p>-->
-<!--</form>-->
 </body>
 </html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Marathon</title>
+</head>
+<body>
+<form th:action="@{{id}(id=${marathon.getId()})}" th:object="${marathon}" method="post">
+    <p>Title: <input type="text" th:field="*{title}" th:value="*{title}"/></p>
+    <input type="submit" value="Save changes"/>
+    <input type="reset" value="Reset">
+</form>
+</body>
+</html>
